@@ -3,25 +3,14 @@ pipeline{
 
     stages{
 
-        stage('sonar quality check'){
-
-            agent{
-
-                docker{
-                    image 'maven'
-                }
-            }
+        stage('docker build and send to nexus'){
             steps{
 
                 script{
-                    withSonarQubeEnv(credentialsId: 'sonar-token') {
-                      sh 'mvn clean package sonar:sonar'
-                    }
-    
-
-
+                    ls
                 }
             }
         }
+
     }
 }
